@@ -8,13 +8,17 @@ namespace CatCoderPratice
 {
     static class Splitter
     {
-        public static string[] Split(string s)
+        public static List<Block> Split(string s)
         {
             string[] values = s.Split(' ');
 
-            List<string[]> valuesBlocked = new List<string[]>();
+            List<Block> valuesBlocked = new List<Block>();
+            for(int i = 0; i < values.Length; i += 5)
+            {
+                valuesBlocked.Add(new Block(Convert.ToInt32(values[i]), Convert.ToChar(values[i + 1]), Convert.ToInt32(valuesBlocked[i + 2]), Convert.ToInt32(valuesBlocked[i + 3]), Convert.ToInt32(valuesBlocked[i + 4])));
+            }
             
-            return null;
+            return valuesBlocked;
         }
     }
 }
