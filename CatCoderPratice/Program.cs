@@ -10,16 +10,19 @@ namespace CatCoderPratice
     {
         static void Main(string[] args)
         {
-            System.IO.StreamReader myFile = new System.IO.StreamReader("C:\\Users\\Berger Elias\\Downloads\\lvl1.inp");
-            string text;
-            text = myFile.ReadToEnd();
-            myFile.Close();
+            //System.IO.StreamReader myFile = new System.IO.StreamReader("C:\\Users\\Berger Elias\\Downloads\\lvl1.inp");
+            string text = "";
+            //text = myFile.ReadToEnd();
+            //myFile.Close();
 
             List<Block> blocks = Splitter.Split(text);
+            List<Block> interceptingBlocks = TestAllBlocks.CheckForMatches(blocks);
 
-            //all combinations algorithm
+            if (interceptingBlocks == null) Console.WriteLine("false");
+            else Console.WriteLine("true");
 
-            System.IO.File.WriteAllText(@"C:\Users\Berger Elias\Downloads\lvl1.txt", "xd");
+
+            //System.IO.File.WriteAllText(@"C:\Users\Berger Elias\Downloads\lvl1.txt", "xd");
 
         }
     }
