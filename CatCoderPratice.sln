@@ -1,13 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatCoderPratice", "CatCoderPratice\CatCoderPratice.csproj", "{6D915E33-C988-44DB-BDEB-8037156DC45E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8F8741A-1E6C-4CDA-A023-E2FD7E31B671}"
 	ProjectSection(SolutionItems) = preProject
 		Block.cs = Block.cs
+		Splitter.cs = Splitter.cs
 	EndProjectSection
 EndProject
 Global
