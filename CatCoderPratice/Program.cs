@@ -10,7 +10,7 @@ namespace CatCoderPratice
     {
         static void Main(string[] args)
         {
-
+            int x = 2;
             Console.WriteLine("");
         }
     }
