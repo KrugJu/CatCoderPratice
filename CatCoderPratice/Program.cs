@@ -11,7 +11,6 @@ namespace CatCoderPratice
         static void Main(string[] args)
         {
             string[] splitText = text.Split(' ', (char)10);
-
         }
     }
 }
