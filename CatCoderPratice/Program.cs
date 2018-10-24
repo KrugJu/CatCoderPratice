@@ -10,6 +10,7 @@ namespace CatCoderPratice
     {
         static void Main(string[] args)
         {
+            string[] splitText = text.Split(' ', (char)10);
             System.IO.StreamReader myFile = new System.IO.StreamReader("C:\\Users\\Berger Elias\\Downloads\\lvl1.inp");
             string text;
             text = myFile.ReadToEnd();
@@ -18,7 +19,6 @@ namespace CatCoderPratice
             List<Block> blocks = Splitter.Split(text);
 
             //all combinations algorithm
-
             System.IO.File.WriteAllText(@"C:\Users\Berger Elias\Downloads\lvl1.txt", "xd");
 
         }
