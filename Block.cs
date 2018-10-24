@@ -3,20 +3,18 @@
 public class Block
 {
     public int id;
+    //x and y coordinates of the bottom left half of the block
     public int x;
     public int y;
     public char orientation;
+    public int length;
 
-    public Block(string input)
+    public Block(int id,char orientation,int x, int y,int length)
 	{
-        char[] array = input.ToCharArray();
-        if (array.Length == 5)
-        {
-            id = Int32.Parse(array[0]);
-            orientation = array[1];
-            x = Int32.Parse(array[2]);
-            y = Int32.Parse(array[3]);
-            length = Int32.Parse(array[4]);
-        }
+        this.id = id;
+        this.orientation = orientation;
+        this.x = x;
+        this.y = y;
+        this.length = length;
 	}
 }
