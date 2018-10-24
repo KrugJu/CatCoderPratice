@@ -18,7 +18,7 @@ namespace CatCoderPratice
             List<Block> blocks = Splitter.Split(text);
             List<Block> interceptingBlocks = TestAllBlocks.CheckForMatches(blocks);
 
-            if (interceptingBlocks == null) Console.WriteLine("false");
+            if (interceptingBlocks.Count == 0) Console.WriteLine("false");
             else Console.WriteLine("true");
 
 
