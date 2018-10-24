@@ -13,7 +13,7 @@ namespace CatCoderPratice
             string[] values = s.Split(' ');
 
             List<Block> valuesBlocked = new List<Block>();
-            for(int i = 0; i < values.Length; i += 5)
+            for(int i = 0; i < values.Length - 5; i += 5)
             {
                 valuesBlocked.Add(new Block(Convert.ToInt32(values[i]), Convert.ToChar(values[i + 1]), Convert.ToInt32(valuesBlocked[i + 2]), Convert.ToInt32(valuesBlocked[i + 3]), Convert.ToInt32(valuesBlocked[i + 4])));
             }
