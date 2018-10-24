@@ -13,7 +13,7 @@ namespace CatCoderPratice
             List<Block> matches = new List<Block>();
             for (int i = 0; i < _blocks.Count; i++)
             {
-                for (int i1 = 0; i1 < _blocks.Count; i++)
+                for (int i1 = 0; i1 < _blocks.Count; i1++)
                 {
                     if (Checker.CheckForInterception(_blocks[i], _blocks[i1]))
                     {
