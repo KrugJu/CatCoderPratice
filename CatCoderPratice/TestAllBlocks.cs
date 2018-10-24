@@ -15,10 +15,13 @@ namespace CatCoderPratice
             {
                 for (int i1 = 0; i1 < _blocks.Count; i1++)
                 {
-                    if (Checker.CheckForInterception(_blocks[i], _blocks[i1]))
+                    if (!_blocks[i].Equals(_blocks[i1]))
                     {
-                        matches.Add(_blocks[i]);
-                        matches.Add(_blocks[i1]);
+                        if (Checker.CheckForInterception(_blocks[i], _blocks[i1]))
+                        {
+                            matches.Add(_blocks[i]);
+                            matches.Add(_blocks[i1]);
+                        }
                     }
                 }
             }
