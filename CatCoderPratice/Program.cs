@@ -21,8 +21,9 @@ namespace CatCoderPratice
             if (interceptingBlocks.Count == 0) Console.WriteLine("false");
             else Console.WriteLine("true");
 
+            //all combinations algorithm
 
-            //System.IO.File.WriteAllText(@"C:\Users\Berger Elias\Downloads\lvl1.txt", "xd");
+            System.IO.File.WriteAllText(@"C:\Users\Berger Elias\Downloads\lvl1.txt", "xd");
 
         }
     }
