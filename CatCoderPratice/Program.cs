@@ -11,7 +11,7 @@ namespace CatCoderPratice
         static void Main(string[] args)
         {
             //System.IO.StreamReader myFile = new System.IO.StreamReader("C:\\Users\\Berger Elias\\Downloads\\lvl1.inp");
-            string text = "0 h 2 3 5 1 v 4 1 5";
+            string text = "0 h 2 3 3 2 v 6 2 2";
             //text = myFile.ReadToEnd();
             //myFile.Close();
 
@@ -23,7 +23,7 @@ namespace CatCoderPratice
 
             //all combinations algorithm
 
-            System.IO.File.WriteAllText(@"C:\Users\Berger Elias\Downloads\lvl1.txt", "xd");
+            //System.IO.File.WriteAllText(@"C:\Users\Berger Elias\Downloads\lvl1.txt", "xd");
 
         }
     }
