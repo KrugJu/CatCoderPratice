@@ -48,6 +48,7 @@
     <Compile Include="MoveHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionFinder.cs" />
     <Compile Include="Splitter.cs" />
     <Compile Include="TestAllBlocks.cs" />
   </ItemGroup>
