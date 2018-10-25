@@ -8,7 +8,7 @@ namespace CatCoderPratice
 {
     static class Checker
     {
-        public static bool CheckForInterception (Block b1, Block b2)
+        public static bool CheckForInterception (Block b1, Block b2, int gridx, int gridy)
         {
             int b1x = b1.x;
             int b1y = b1.y;
@@ -17,11 +17,15 @@ namespace CatCoderPratice
 
             for(int i = 0; i < b1.length; i++)
             {
-                for(int j = 0; j < b2.length; j++)
+                
+
+                for (int j = 0; j < b2.length; j++)
                 {
                     if (b1x == b2x && b1y == b2y) return true;
+                    else if (b1x > gridx || b1y > gridy || b2x > gridx || b2y > gridy) return true;
 
-                    if(b2.orientation == 'h')
+
+                    if (b2.orientation == 'h')
                     {
                         b2x++;
                     }
@@ -47,7 +51,7 @@ namespace CatCoderPratice
             }
 
             return false;
-        }
+        }       
 
     }
 }

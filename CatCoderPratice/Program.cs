@@ -11,12 +11,16 @@ namespace CatCoderPratice
         static void Main(string[] args)
         {
             //System.IO.StreamReader myFile = new System.IO.StreamReader("C:\\Users\\Berger Elias\\Downloads\\lvl1.inp");
-            string text = "0 h 2 3 3 2 v 6 2 2";
+            string text = "0 v 3 3 2 1 v 3 5 2";
             //text = myFile.ReadToEnd();
             //myFile.Close();
 
-            List<Block> blocks = Splitter.Split(text);
-            List<Block> interceptingBlocks = TestAllBlocks.CheckForMatches(blocks);
+            List<Block> blocks = Splitter.SplitIntoBlocks(text);
+            int[] move = Splitter.GetMove(text);
+            MoveHandler.ApplyMove(blocks, move);
+            int[] grid = Splitter.GetGrid(text);
+
+            List<Block> interceptingBlocks = TestAllBlocks.CheckForMatches(blocks, grid[0], grid[1]);
 
             if (interceptingBlocks.Count == 0) Console.WriteLine("false");
             else Console.WriteLine("true");
