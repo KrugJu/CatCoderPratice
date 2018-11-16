@@ -47,5 +47,90 @@ namespace Template
                 //Check above
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //Berger
+
+
+        public static List<int> GetBuildings (int[][] grid)
+        {
+            for(int i = 0; i < grid.Length; i++)
+            {
+                for(int j = 0; j < grid[0].Length; j++)
+                {
+                    if(CheckForBuilding(grid, i, j) == )
+                }
+            }
+        }
+
+        public static string CheckForBuilding(int[][] grid, int row, int col)
+        {
+            string direction = "";
+
+            if (col < grid[0].Length && grid[row][col + 1] == grid[row][col])
+            {
+                direction = "right";
+            }
+            else if (row < grid.Length && grid[row + 1][col] == grid[row][col])
+            {
+                direction = "down";
+            }
+            else if (col > 0 && grid[row][col - 1] == grid[row][col])
+            {
+                direction = "left";
+            }
+
+            return direction;
+            
+        }
+
     }
 }

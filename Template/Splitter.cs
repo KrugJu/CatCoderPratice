@@ -36,7 +36,7 @@ namespace Template
 
             for (int row = 0; row < rows.Length; row++)
             {
-                for(int col = 0; col < grid[0].Length; col++)
+                for(int col = 0; col < grid[row].Length; col++)
                 {
                     intGrid[row][col] = Convert.ToInt32(grid[row][col]);
                 }
