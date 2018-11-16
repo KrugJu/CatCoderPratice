@@ -8,9 +8,9 @@ namespace Pong
 {
     public static class Splitter
     {
-        public static List<> (string s)
+        public static List<> (string s, char c)
         {
-            string[] values = s.Split(' ');
+            string[] values = s.Split(c);
 
             List<> valuesList = new List<>();
 
