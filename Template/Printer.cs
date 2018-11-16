@@ -10,7 +10,7 @@ namespace Template
     {
         public static void printAllOutputs(List<string> inputs)
         {
-
+            
             List<string> outputs = new List<string>();
 
             foreach (string input in inputs)
