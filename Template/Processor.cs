@@ -102,11 +102,91 @@ namespace Template
 
         public static List<int> GetBuildings (int[][] grid)
         {
+            int id = 1;
+            int area = 0;
+
             for(int i = 0; i < grid.Length; i++)
             {
-                for(int j = 0; j < grid[0].Length; j++)
+                for(int j = 0; j < grid[i].Length; j++)
                 {
-                    if(CheckForBuilding(grid, i, j) == )
+                    if (grid[i][j] != 0)
+                    {
+                        area++;
+
+                        int origini = i;
+                        int originj = j;
+
+                        grid[i][j] = 0;
+
+                        //start building finding process
+
+
+                        while(CheckForBuilding(grid, i, j) == "right")
+                        {
+                            j++;
+                            area++;
+                        }
+
+                        if(CheckForBuilding(grid, i, j) != "down")
+                        {
+                            while (j != originj)
+                            {
+                                if (CheckForBuilding(grid, i, j) == "down")
+                                {
+                                    i++;
+                                    area++;
+
+                                    while (CheckForBuilding(grid, i, j) == "left")
+                                    {
+                                        j--;
+                                        area++;
+                                    }
+
+                                    i--;
+                                }
+
+                                j--;
+
+                            }
+                        }
+
+                        
+
+                        
+
+
+
+                        while (CheckForBuilding(grid, i, j) == "right" || j != currentj || CheckForBuilding(grid, i, j) == "down")
+                        {
+
+
+                            while (CheckForBuilding(grid, i, j) == "right")
+                            {
+                                j++;
+                                area++;
+                                grid[i][j] = 0;
+                            }
+
+                            if(CheckForBuilding(grid, i, j) == "down")
+                            {
+                                i++;
+                                area++;
+                                grid[i][j] = 0;
+                            }
+
+                            while(j != currentj)
+                            {
+                                j--;
+                            }
+
+                            currenti = i;
+                            currentj = j;
+                        }                       
+                    
+
+
+
+                    }
                 }
             }
         }
@@ -115,7 +195,7 @@ namespace Template
         {
             string direction = "";
 
-            if (col < grid[0].Length && grid[row][col + 1] == grid[row][col])
+            if (col < grid[row].Length && grid[row][col + 1] == grid[row][col])
             {
                 direction = "right";
             }
