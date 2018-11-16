@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pong
+namespace Template
 {
     public static class Printer
     {
@@ -31,7 +31,7 @@ namespace Pong
                 outputs.Add(line + "\n");
             }
 
-            System.IO.File.WriteAllLines(@"C:\Users\Berger Elias\Downloads\Output\output.txt", outputs);
+            System.IO.File.WriteAllLines(@"C:\Output\output.txt", outputs);
         }
     }
 }
