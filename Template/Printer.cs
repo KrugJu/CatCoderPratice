@@ -15,17 +15,17 @@ namespace Template
 
             foreach (string input in inputs)
             {
-                List<> splitValues = Splitter.   (input, ' ');
+                List<int> splitValues = Splitter.SplitIntoBuildings(input);
+                int result = Processor.TestForBuilding(splitValues);
+                string line = result.ToString();
 
-                string line = "";
-
-                foreach (value in )
-                {
-                    line += value.ToString() + " ";
-                }
+                //foreach (value in splitValues)
+                //{
+                //    line += value.ToString() + " ";
+                //}
 
 
-                line = line.TrimEnd(' ');
+                //line = line.TrimEnd(' ');
 
 
                 outputs.Add(line + "\n");
