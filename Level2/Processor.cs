@@ -20,17 +20,26 @@ namespace Level2
             {
                 for(int j = 0; j < grid[i].Length; j++)
                 {
-                    if(grid[i][j] != 0)
+                    if(grid[i][j] != 0) //origin of building found
                     {
-                        id++;
-                        area++;
-                        List<Position> visitedPos = new List<Position>();
-                        buildings.Add(getBuilding(ref grid, new Position(i,j), new Position(i,j), visitedPos, grid[i][j], id, ref area));
+                        id++; //give building an id
+                        area++; //set area of building to 1 since first field has been found
+                        List<Position> visitedPos = new List<Position>(); //create list of visited positions
+                        buildings.Add(getBuilding(ref grid, new Position(i,j), new Position(i,j), visitedPos, grid[i][j], id, ref area)); //start algorithm for finding the whole building and add it to the list of buildings
                     }
                 }
             }
 
-            return buildings.OrderBy(b => b.Id).ToList();
+            List<Building> orderedBuildings = buildings.OrderBy(b => b.Area).ToList();
+
+            for(int i = 0; i < orderedBuildings.Count; i++)
+            {
+                orderedBuildings[i].Id = i;
+            }
+
+
+
+            return orderedBuildings;
             
         }
 
