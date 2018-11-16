@@ -15,7 +15,7 @@ namespace Template
 
             foreach (string input in inputs)
             {
-                List<> splitValues = Splitter.   (input);
+                List<> splitValues = Splitter.   (input, ' ');
 
                 string line = "";
 

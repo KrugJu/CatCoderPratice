@@ -8,18 +8,17 @@ namespace Template
 {
     public static class Splitter
     {
-        public static List<> (string s, char c)
+        public static List<int> SplitIntoBuildings(string s)
         {
-            string[] values = s.Split(c);
+            string[] values = s.Split(' ', '\n');
 
-            List<> valuesList = new List<>();
+            List<int> valuesList = new List<int>();
 
-            foreach (string value in values)
+            for(int i = 2; i < values.Length; i++)
             {
-                valuesList.Add();
+                valuesList.Add(Convert.ToInt32(values[i]));
             }
-
-
+                      
             return valuesList;
         }
     }
