@@ -13,7 +13,6 @@ namespace Level2
         {
 
             List<Building> buildings = new List<Building>();
-            int id = 0;
             int area = 0;
 
             for(int i = 0; i < grid.Length; i++)
@@ -22,10 +21,9 @@ namespace Level2
                 {
                     if(grid[i][j] != 0) //origin of building found
                     {
-                        id++; //give building an id
-                        area++; //set area of building to 1 since first field has been found
                         List<Position> visitedPos = new List<Position>(); //create list of visited positions
-                        buildings.Add(getBuilding(ref grid, new Position(i,j), new Position(i,j), visitedPos, grid[i][j], id, ref area)); //start algorithm for finding the whole building and add it to the list of buildings
+                        buildings.Add(getBuilding(ref grid, new Position(i,j), new Position(i,j), visitedPos, grid[i][j], ref area)); //start algorithm for finding the whole building and add it to the list of buildings
+                        area = 0;
                     }
                 }
             }
@@ -43,7 +41,7 @@ namespace Level2
             
         }
 
-        private static Building getBuilding (ref int[][] grid, Position origin, Position pos, List<Position> visitedPos, int height, int id, ref int area)
+        private static Building getBuilding (ref int[][] grid, Position origin, Position pos, List<Position> visitedPos, int height, ref int area)
         {
             visitedPos.Add(new Position(pos.i, pos.j));
             grid[pos.i][pos.j] = 0;
@@ -52,24 +50,24 @@ namespace Level2
 
             if(checkForRightBuilding(grid, pos, height) && !visitedPos.Contains(new Position(pos.i, pos.j + 1)))
             {
-                getBuilding(ref grid, origin, new Position(pos.i, pos.j + 1), visitedPos, height, id, ref area);
+                getBuilding(ref grid, origin, new Position(pos.i, pos.j + 1), visitedPos, height, ref area);
             }
-            else if (checkForLeftBuilding(grid, pos, height) && !visitedPos.Contains(new Position(pos.i, pos.j - 1)))
+            if (checkForLeftBuilding(grid, pos, height) && !visitedPos.Contains(new Position(pos.i, pos.j - 1)))
             {
-                getBuilding(ref grid, origin, new Position(pos.i, pos.j - 1), visitedPos, height, id, ref area);
+                getBuilding(ref grid, origin, new Position(pos.i, pos.j - 1), visitedPos, height, ref area);
             }
-            else if (checkForUpBuilding(grid, pos, height) && !visitedPos.Contains(new Position(pos.i - 1, pos.j)))
+            if (checkForUpBuilding(grid, pos, height) && !visitedPos.Contains(new Position(pos.i - 1, pos.j)))
             {
-                getBuilding(ref grid, origin, new Position(pos.i - 1, pos.j), visitedPos, height, id, ref area);
+                getBuilding(ref grid, origin, new Position(pos.i - 1, pos.j), visitedPos, height, ref area);
             }
-            else if (checkForDownBuilding(grid, pos, height) && !visitedPos.Contains(new Position(pos.i + 1, pos.j)))
+            if (checkForDownBuilding(grid, pos, height) && !visitedPos.Contains(new Position(pos.i + 1, pos.j)))
             {
-                getBuilding(ref grid, origin, new Position(pos.i + 1, pos.j), visitedPos, height, id, ref area);
+                getBuilding(ref grid, origin, new Position(pos.i + 1, pos.j), visitedPos, height, ref area);
             }
 
             if(pos.i == origin.i && pos.j == origin.j) //if first function call gets here were done, otherwise we can return null as we dont need any return value if were not done
             {
-                return new Building(id, area);
+                return new Building(0, area);
             }
             else
             {
