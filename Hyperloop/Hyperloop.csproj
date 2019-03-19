@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
-	<Compile Include="Processor.cs" />
-	<Compile Include="Printer.cs" />
-	<Compile Include="Splitter.cs" />
+    <Compile Include="Processor.cs" />
+    <Compile Include="Printer.cs" />
+    <Compile Include="Splitter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

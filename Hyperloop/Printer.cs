@@ -8,30 +8,28 @@ namespace Hyperloop
 {
     public static class Printer
     {
-        public static void printAllOutputs(List<string> inputs)
+        public static void printAllOutputs(string inputfilepath, string outputfilepath)
         {
-            
+
+            string input = System.IO.File.ReadAllText(inputfilepath);
             List<string> outputs = new List<string>();
 
-            foreach (string input in inputs)
+
+            List<Point> obstacle = Splitter.getAngle(input);
+            List<Point> points = Splitter.SplitPoints(input);
+
+            List<Point> validPoints = Processor.getInsidePoints(obstacle, points);
+
+            string line = "";
+
+            foreach (Point p in validPoints)
             {
-                List<int> splitValues = Splitter.SplitIntoBuildings(input);
-                int result = Processor.TestForBuilding(splitValues);
-                string line = result.ToString();
-
-                //foreach (value in splitValues)
-                //{
-                //    line += value.ToString() + " ";
-                //}
-
-
-                //line = line.TrimEnd(' ');
-
-
-                outputs.Add(line + "\n");
+                line += p.ToString();
             }
 
-            System.IO.File.WriteAllLines(@"C:\Output\output.txt", outputs);
+            line = line.TrimEnd(' ');
+
+            System.IO.File.WriteAllText(outputfilepath, line);
         }
     }
 }
