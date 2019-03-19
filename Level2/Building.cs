@@ -10,13 +10,36 @@ namespace Level2
     {
         int id;
         int area;
+        List<Position> blocks;
 
-        public Building(int id, int area)
+        public Building(int id)
         {
             this.id = id;
-            this.area = area;
         }
 
+        public Building(int id, int area, List<Position> blocks) : this(id)
+        {
+            this.area = area;
+            this.blocks = blocks;
+        }
+
+
+        public Position getCentroid()
+        {
+            double x = 0;
+            double y = 0;
+
+            foreach(Position block in blocks)
+            {
+                x += block.i + 0.5;
+                y += block.j + 0.5;
+            }
+
+            x = Math.Ceiling(x/area);
+            y = Math.Ceiling(y/area);
+
+            return new Position(Convert.ToInt32(x),Convert.ToInt32(y));
+        }
 
         public int Id
         {
@@ -41,6 +64,19 @@ namespace Level2
             set
             {
                 area = value;
+            }
+        }
+
+        public List<Position> Blocks
+        {
+            get
+            {
+                return blocks;
+            }
+
+            set
+            {
+                blocks = value;
             }
         }
     }

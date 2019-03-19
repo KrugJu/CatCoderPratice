@@ -11,7 +11,7 @@ namespace Level2
         static void Main(string[] args)
         {
             
-            Printer.printAllOutputs(@"C:\CCC\Level2\level2_0.in", @"C:\CCC\Level2\level2_0.ou");
+            Printer.printAllOutputs(@"C:\CCC\Level3\level3_0.in", @"C:\CCC\Level3\level3_0.ou");
             
         }
     }

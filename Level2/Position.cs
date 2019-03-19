@@ -8,10 +8,10 @@ namespace Level2
 {
     public class Position
     {
-        public int i;
-        public int j;
+        public double i;
+        public double j;
 
-        public Position(int i, int j)
+        public Position(double i, double j)
         {
             this.i = i;
             this.j = j;

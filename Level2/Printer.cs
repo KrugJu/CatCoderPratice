@@ -16,23 +16,28 @@ namespace Level2
             List<string> outputs = new List<string>();
 
             
-            int[][] splitValues = Splitter.SplitIntoMatrix(input);
+            int[][] splitValues = Splitter.splitIntoBuildingGrid(input);
+            List<Pair> pairs = Splitter.splitIntoPairs(input);
 
             List<Building> sortedBuildings = Processor.getBuildings(splitValues);
-
+            List<double> distances = Processor.getDistances(pairs, sortedBuildings);
 
             string line = "";
 
-            foreach (Building building in sortedBuildings)
+            foreach (double distance in distances)
             {
-                line += building.Id + " " + building.Area + " ";
+                int intDis = Convert.ToInt32(Math.Ceiling(distance));
+
+                line += intDis;
+
+                line = line.TrimEnd(' ');
+                
+                outputs.Add(line);
+
+                line = "";
             }
 
-
-            line = line.TrimEnd(' ');
-
-
-            outputs.Add(line + "\n");
+            
             
 
             System.IO.File.WriteAllLines(outputfilepath, outputs);

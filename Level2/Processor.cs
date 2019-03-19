@@ -41,10 +41,24 @@ namespace Level2
             
         }
 
+        public static List<double> getDistances(List<Pair> pairs, List<Building> buildings)
+        {
+            List<double> distances = new List<double>();
+            Pair newPair;
+
+            foreach(Pair pair in pairs)
+            {
+                newPair = new Pair(buildings[pair.B1.Id], buildings[pair.B2.Id]);
+                distances.Add(newPair.getDistance());
+            }
+
+            return distances;
+        }
+
         private static Building getBuilding (ref int[][] grid, Position origin, Position pos, List<Position> visitedPos, int height, ref int area)
         {
             visitedPos.Add(new Position(pos.i, pos.j));
-            grid[pos.i][pos.j] = 0;
+            grid[Convert.ToInt32(pos.i)][Convert.ToInt32(pos.j)] = 0;
             area++;
 
 
@@ -67,7 +81,7 @@ namespace Level2
 
             if(pos.i == origin.i && pos.j == origin.j) //if first function call gets here were done, otherwise we can return null as we dont need any return value if were not done
             {
-                return new Building(0, area);
+                return new Building(0, area, visitedPos);
             }
             else
             {
@@ -79,7 +93,7 @@ namespace Level2
 
         private static bool checkForRightBuilding(int[][] grid, Position pos, int height)
         {
-            if(pos.j + 1 < grid[pos.i].Length && grid[pos.i][pos.j + 1] == height)
+            if(pos.j + 1 < grid[Convert.ToInt32(pos.i)].Length && grid[Convert.ToInt32(pos.i)][Convert.ToInt32(pos.j) + 1] == height)
             {
                 return true;
             }
@@ -91,7 +105,7 @@ namespace Level2
 
         private static bool checkForLeftBuilding(int[][] grid, Position pos, int height)
         {
-            if (pos.j - 1 >= 0 && grid[pos.i][pos.j - 1] == height)
+            if (pos.j - 1 >= 0 && grid[Convert.ToInt32(pos.i)][Convert.ToInt32(pos.j) - 1] == height)
             {
                 return true;
             }
@@ -103,7 +117,7 @@ namespace Level2
 
         private static bool checkForUpBuilding(int[][] grid, Position pos, int height)
         {
-            if (pos.i - 1 >= 0 && pos.j < grid[pos.i - 1].Length && grid[pos.i - 1][pos.j] == height)
+            if (pos.i - 1 >= 0 && pos.j < grid[Convert.ToInt32(pos.i) - 1].Length && grid[Convert.ToInt32(pos.i) - 1][Convert.ToInt32(pos.j)] == height)
             {
                 return true;
             }
@@ -115,7 +129,7 @@ namespace Level2
 
         private static bool checkForDownBuilding(int[][] grid, Position pos, int height)
         {
-            if (pos.i + 1 < grid.Length && pos.j < grid[pos.i + 1].Length && grid[pos.i + 1][pos.j] == height)
+            if (pos.i + 1 < grid.Length && pos.j < grid[Convert.ToInt32(pos.i) + 1].Length && grid[Convert.ToInt32(pos.i) + 1][Convert.ToInt32(pos.j)] == height)
             {
                 return true;
             }
