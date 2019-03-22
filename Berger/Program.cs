@@ -19,6 +19,7 @@ namespace Berger
             List<List<int>> distances = new List<List<int>>();
             List<List<string>> sdist = new List<List<string>>();
             List<string> result = new List<string>();
+            List <int[]> visited = new List<int[]>();
 
             using (StreamReader sr = new StreamReader(@"C:\CCC\level2_4.in"))
             {
@@ -42,7 +43,19 @@ namespace Berger
                 }
             }
 
-            while()
+            int row = startl;
+            int col = startc;
+            while (row < colors.Count && col < colors[0].Count)
+            {
+                int right = -1;
+                int up = -1;
+                int down = -1;
+                if (col < colors[0].Count - 1)
+                    int right = colors[row][col].getDistance(colors[row][col + 1]);
+
+                int up = colors[row][col].getDistance(colors[row - 1][col]);
+                int down = colors[row][col].getDistance(colors[row + 1][col]);
+            }
 
             foreach (List<Color> cline in colors)
             {
