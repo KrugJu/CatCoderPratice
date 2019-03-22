@@ -12,35 +12,56 @@ namespace Berger
         static void Main(string[] args)
         {
             int clines;
+            int ccols;
+            int startl;
+            int startc;
             List<List<Color>> colors = new List<List<Color>>();
-            List<int> distances = new List<int>();
-            List<string> sdist = new List<string>();
+            List<List<int>> distances = new List<List<int>>();
+            List<List<string>> sdist = new List<List<string>>();
+            List<string> result = new List<string>();
 
-            using (StreamReader sr = new StreamReader(@"C:\CCC\level1_3.in"))
+            using (StreamReader sr = new StreamReader(@"C:\CCC\level2_4.in"))
             {
-                string line;
-                clines = Convert.ToInt32(sr.ReadLine().Trim());
+                string line = sr.ReadLine().Trim();
+                clines = Convert.ToInt32(line.Split(' ')[0]);
+                ccols = Convert.ToInt32(line.Split(' ')[1]);
+                line = sr.ReadLine().Trim();
+                startl = Convert.ToInt32(line.Split(' ')[0]);
+                startc = Convert.ToInt32(line.Split(' ')[1]);
 
-                for(int i = 0; i < clines; i++)
+                for (int i = 0; i < clines; i++)
                 {
                     List<Color> cList = new List<Color>();
                     line = sr.ReadLine().Trim();
                     string[] c = line.Split(' ');
-                    cList.Add(new Color(Convert.ToInt32(c[0]), Convert.ToInt32(c[1]), Convert.ToInt32(c[2])));
-                    cList.Add(new Color(Convert.ToInt32(c[3]), Convert.ToInt32(c[4]), Convert.ToInt32(c[5])));
+                    for(int j = 0; j < c.Length; j+=3)
+                    {
+                        cList.Add(new Color(Convert.ToInt32(c[j]), Convert.ToInt32(c[j + 1]), Convert.ToInt32(c[j + 2])));
+                    }
                     colors.Add(cList);
                 }
             }
 
-            foreach (List<Color> pair in colors)
+            while()
+
+            foreach (List<Color> cline in colors)
             {
-                distances.Add(pair[0].getDistance(pair[1]));
-                sdist.Add(pair[0].getDistance(pair[1]).ToString());
+                List<int> distLine = new List<int>();
+                List<string> sdistLine = new List<string>();
+                for (int i = 0; i < ccols - 1; i++)
+                {
+                    distLine.Add(cline[i].getDistance(cline[i+1]));
+                    sdistLine.Add(cline[i].getDistance(cline[i+1]).ToString());
+                }
+                distances.Add(distLine);
+                sdist.Add(sdistLine);
             }
 
-
-            System.IO.File.WriteAllLines(@"C:\CCC\level1_3.ou", sdist);
-
+            foreach(List<string> l in sdist)
+            {
+                result.Add(String.Join(" ", l));
+            }
+            System.IO.File.WriteAllLines(@"C:\CCC\level2_4.ou", result);
         }
     }
 }
