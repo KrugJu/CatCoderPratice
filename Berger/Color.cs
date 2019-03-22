@@ -21,6 +21,8 @@ namespace Berger
 
         public int getDistance(Color c)
         {
+            if (c.R == 0 && c.B == 0 && c.G == 0)
+                return int.MaxValue;
             return (int) Math.Sqrt(Math.Pow(this.R - c.R, 2) + Math.Pow(this.G - c.G, 2) + Math.Pow(this.B - c.B, 2));
         }
     }
