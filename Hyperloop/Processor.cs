@@ -9,25 +9,33 @@ namespace Hyperloop
 {
     public static class Processor
     {
-        public static List<Point> getInsidePoints(List<Point> obstacle,  List<Point> points)
+        public static List<Point> getInsidePoints(List<List<Point>> obstacles,  List<Point> points)
         {
             List<Point> result = new List<Point>();
-            double a1 = Math.Atan2(obstacle[0].Y, obstacle[0].X);
-            double a2 = Math.Atan2(obstacle[1].Y, obstacle[1].X);
 
             foreach (Point p in points)
             {
                 double ap = Math.Atan2(p.Y, p.X);
-                if (a1 < a2)
+                bool valid = true;
+
+                foreach (List<Point> obstacle in obstacles)
                 {
-                    if (ap < a1 || ap > a2)
-                        result.Add(p);
+                    double a1 = Math.Atan2(obstacle[0].Y, obstacle[0].X);
+                    double a2 = Math.Atan2(obstacle[1].Y, obstacle[1].X);
+
+                    if (obstacle[0].Y > 0)
+                    {
+                        if (ap < a1 && ap > a2 && p.Y > obstacle[0].Y)
+                            valid = false;
+                    }
+                    else
+                    {
+                        if (ap > a1 && ap < a2 && p.Y < obstacle[0].Y)
+                            valid = false;
+                    }
                 }
-                else
-                {
-                    if (ap > a1 || ap < a2)
-                        result.Add(p);
-                }
+                if(valid)
+                    result.Add(p);
             }
 
             return result;

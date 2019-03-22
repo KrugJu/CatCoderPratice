@@ -15,10 +15,10 @@ namespace Hyperloop
             List<string> outputs = new List<string>();
 
 
-            List<Point> obstacle = Splitter.getAngle(input);
+            List<List<Point>> obstacles = Splitter.getObstacles(input);
             List<Point> points = Splitter.SplitPoints(input);
 
-            List<Point> validPoints = Processor.getInsidePoints(obstacle, points);
+            List<Point> validPoints = Processor.getInsidePoints(obstacles, points);
 
             string line = "";
 
