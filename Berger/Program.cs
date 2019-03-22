@@ -51,10 +51,13 @@ namespace Berger
                 int up = -1;
                 int down = -1;
                 if (col < colors[0].Count - 1)
-                    int right = colors[row][col].getDistance(colors[row][col + 1]);
+                    right = colors[row][col].getDistance(colors[row][col + 1]);
+                if(row > 0)
+                    up = colors[row][col].getDistance(colors[row - 1][col]);
+                if(row < colors.Count - 1)
+                    down = colors[row][col].getDistance(colors[row + 1][col]);
 
-                int up = colors[row][col].getDistance(colors[row - 1][col]);
-                int down = colors[row][col].getDistance(colors[row + 1][col]);
+                
             }
 
             foreach (List<Color> cline in colors)
